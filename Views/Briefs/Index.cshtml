@@ -1,0 +1,28 @@
+<h1>Brief</h1>
+<section>
+    <h2>Company Info</h2>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Company Name</th>
+                <th>Description</th>
+                <th>Group members & roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var Brief in Model){
+                <tr>
+                    <td>@Brief["Id"]</td>
+                    <td>@Brief["Company Name"]</td>
+                    <td>@Brief["Description"]</td>
+                    <td>@Brief["Group members & roles"]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+<section>
+    <h3>Proposal</h3>
+    
+</section>
