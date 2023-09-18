@@ -1,3 +1,4 @@
+@* Brief of the company *@
 <h1>Brief</h1>
 <section>
     <h2>Company Info</h2>
@@ -10,6 +11,7 @@
                 <th>Group members & roles</th>
             </tr>
         </thead>
+        @* traversing the loop *@
         <tbody>
             @foreach(var Brief in Model){
                 <tr>
@@ -23,6 +25,7 @@
     </table>
 </section>
 
+@* Another section for the proposal *@
 <section>
     <h3>Proposal</h3>
     <p>

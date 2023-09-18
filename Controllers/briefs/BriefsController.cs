@@ -1,3 +1,4 @@
+// main content file
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Dreams
         {
             List<Dictionary<string, object>> data = new()
             {
+                // brief content
                 new()
                 {
                     {"Id", 1},
@@ -28,6 +30,7 @@ namespace Dreams
                 }
             };
 
+// proposal content
             ViewData["ProposalData"] = new
             {
                 description = "Dreams Innovations is an innovative platform dedicated to transforming lives through cutting-edge healthcare AI technology. We aim to provide a one-stop solution for individuals seeking groundbreaking advancements in healthcare. At Dreams Innovations, we believe in pushing the boundaries of what's possible to create a better future for all.",
