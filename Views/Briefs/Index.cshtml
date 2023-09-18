@@ -22,7 +22,19 @@
         </tbody>
     </table>
 </section>
+
 <section>
     <h3>Proposal</h3>
-    
+    <p>
+        <strong>Description of the Site:</strong> @(((dynamic)ViewData["ProposalData"]).description)
+    </p>
+    <p>
+        <strong>Products or Services:</strong> @(((dynamic)ViewData["ProposalData"]).ProductsOrServices)
+    </p>
+    <p>
+        <strong>Industry Need:</strong> @(((dynamic)ViewData["ProposalData"]).IndustryNeed)
+    </p>
+    <p>
+        <strong>User Roles:</strong> @(((dynamic)ViewData["ProposalData"]).UserRoles)
+    </p>
 </section>
