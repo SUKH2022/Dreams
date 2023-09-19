@@ -1,0 +1,30 @@
+/* Set the background color */
+body {
+    background-color: #f5f5f5;
+}
+
+/* font styles */
+.title-font {
+    font-family: 'Title Font', Arial, sans-serif;
+}
+
+.subtitle-font {
+    font-family: 'Subtitle Font', Arial, sans-serif;
+}
+
+.body-font {
+    font-family: 'Body Font', Arial, sans-serif;
+}
+
+/* brand colors */
+.primary-color {
+    color: #007acc;
+}
+
+.secondary-color {
+    color: #ff5722;
+}
+
+.accent-color {
+    color: #ff9800;
+}
