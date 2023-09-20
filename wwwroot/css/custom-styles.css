@@ -9,11 +9,11 @@ body {
 }
 
 .subtitle-font {
-    font-family: 'Subtitle Font', Arial, sans-serif;
+    font-family: 'Subtitle Font', 'Gill Sans', 'Gill Sans MT','Trebuchet MS', sans-serif;
 }
 
 .body-font {
-    font-family: 'Body Font', Arial, sans-serif;
+    font-family: 'Body Font', 'Times New Roman', Times, serif;
 }
 
 /* brand colors */
