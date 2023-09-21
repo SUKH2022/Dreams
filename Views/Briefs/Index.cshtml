@@ -1,7 +1,7 @@
 @* Brief of the company *@
-<h1 class="title-font primary-color">Brief</h1>
+<h1 class="title-font primary-color my-3 py-3">About Us</h1>
 <section>
-    <h2 class="subtitle-font secondary-color">Company Info</h2>
+    <h2 class="subtitle-font secondary-color py-3">Company Info</h2>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -27,17 +27,17 @@
 
 @* Another section for the proposal *@
 <section>
-    <h3 class="subtitle-font secondary-color">Proposal</h3>
+    <h3 class="subtitle-font secondary-color my-3">Proposal</h3>
     <p>
-        <strong>Description of the Site:</strong> @(((dynamic)ViewData["ProposalData"]).description)
+        <em>Description of the Site:</em> @(((dynamic)ViewData["ProposalData"]).description)
     </p>
     <p>
-        <strong>Products or Services:</strong> @(((dynamic)ViewData["ProposalData"]).ProductsOrServices)
+        <em>Products or Services:</em> @(((dynamic)ViewData["ProposalData"]).ProductsOrServices)
     </p>
     <p>
-        <strong>Industry Need:</strong> @(((dynamic)ViewData["ProposalData"]).IndustryNeed)
+        <em>Industry Need:</em> @(((dynamic)ViewData["ProposalData"]).IndustryNeed)
     </p>
     <p>
-        <strong>User Roles:</strong> @(((dynamic)ViewData["ProposalData"]).UserRoles)
+        <em>User Roles:</em> @(((dynamic)ViewData["ProposalData"]).UserRoles)
     </p>
 </section>
