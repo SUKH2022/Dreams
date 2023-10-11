@@ -1,0 +1,149 @@
+<div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h2 class="sub-title my-3 py-3">Contact Info.</h2>
+                    <p><i class="fa-solid fa-paper-plane"></i> sukhpreet.saini2020@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i> Mobile Number:- +1 6476854689</p>
+                    <!-- div with social icons short hand is div.social-icons -->
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://twitter.com/?lang=en"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://ca.linkedin.com/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://web.whatsapp.com/"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.snapchat.com/"><i class="fa-brands fa-snapchat"></i></a>
+                    </div>
+
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <!-- google sheets> add script> save> run> permission review> sign in> advance>go to contact info unsafe  -->
+                        <!-- after run> click deploy> new deployment> fill description means Contact info> who has access to anyone as it is imp> click on deploy.  -->
+                        <!-- google sheets is case sensitive  -->
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your E-mail" required>
+                        <textarea name="Message" row="6" placeholder="Your Message"></textarea> <!-- style="height: 233px; width: 647px;" -->
+                        <!-- it is to give more option to design the button -->
+                        <button type="submit" class="btn btn2">Submit</button>    
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://kit.fontawesome.com/369860f82a.js" crossorigin="anonymous">
+        //https://github.com/jamiewilson/form-to-google-sheets
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwnorGprtB5YaIUz4DqkSbJ6wjHXtOUX4gJMmq2Fs6kMbjizm_WUcRBZcrZVowREHLo/exec'
+        //copy the name which is submit-to-google-sheet to form name
+        const form = document.forms['submit-to-google-sheet']
+        const msg= document.getElementById("msg")
+      
+        //msg in the innerHTML will be display forever so write setTimeout()
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, {method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="Message Sent Successfully"
+                setTimeout(function(){
+                    msg.innerHTML= ""
+                }, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+      <style>
+        .btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #088178;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fefefe;
+    transition: background 0.5s;
+}
+.btn:hover{
+    background: #088178;
+}
+/* ==========Contact Info========= */
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 60%;
+}
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i{
+    color: #088178;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.social-icons{
+    margin-top: 30px;
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    display: inline-block;
+    color: #ababab;
+    margin-right: 15px;
+    transition: transform 0.5s;
+}
+.social-icons a:hover{
+    color: #088178;
+    transform: translateY(-5px);
+}
+.btn.btn2{
+    display: inline-block;
+    background: #088178;
+    box-shadow: 0 2px 25px rgba(129, 3, 68, 0.5);
+}
+.contact-right form{
+    width: 100%;
+}
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fefefe;
+    font-size: 18px;
+    border-radius: 6px;
+    resize: none;
+}
+form btn2{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+}
+.copyright i{
+    color: #088178;
+}
+/* ------------CSS for small screens---------- */
+nav .fa-solid{
+    display: none;
+}
+
+/* id is denoted by # */
+#msg{
+    color: #61b752;
+    margin-top: -40px;
+    display: block;
+}
+      </style>

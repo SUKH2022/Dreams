@@ -19,6 +19,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Alkatra&family=Fira+Sans+Extra+Condensed:wght@700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:wght@400;600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
 </head>
 
 <body>
@@ -50,6 +54,9 @@
                         <a class="nav-link" asp-area="" asp-controller="CategoryProducts" asp-action="Index">Products</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                 </ul>
@@ -73,6 +80,42 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <style>
+        /* css for create pages */
+a{
+    text-decoration: none;
+    color: #bdbdbd;
+    }
+a:hover{
+    color: #088178;
+}
+
+.btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #088178;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fefefe;
+}
+.btn:hover{
+    background: #088178;
+}
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fefefe;
+    font-size: 18px;
+    border-radius: 6px;
+}
+    </style>
 </body>
 
 </html>
+
