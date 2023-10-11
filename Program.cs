@@ -1,5 +1,9 @@
-
+using System.Reflection.Metadata;
+using System;
+using System.Collections.Immutable;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using Dreams.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,10 +15,6 @@ builder.Services.AddControllersWithViews();
 var connectionString=builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string not found");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySQL(connectionString));
-// var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string not found.");
-
-// builder.Services.AddDbContext<ApplicationDbContext>(options => 
-//     options.UseMySQL(connectionString));
 
 var app = builder.Build();
 
