@@ -19,7 +19,7 @@ namespace Dreams
                     {"Id", 1},
                     {"Company Name", "Dreams"},
                     {"Description", "Pioneering healthcare AI solutions for a better future."},
-                    {"Group members & roles", "Sukhpreet Saini- Full Stack Developer"}
+                    {"Group members & roles", "Sukhpreet Saini- Full-Stack Developer, Database Administrator, QA and Testing"}
                 },
                 new()
                 {
@@ -27,6 +27,13 @@ namespace Dreams
                     {"Company Name", "Dreams"},
                     {"Description", "Pioneering healthcare AI solutions for a better future."},
                     {"Group members & roles", "Abin Byju- Front-End Developer"}
+                },
+                new()
+                {
+                    {"Id", 3},
+                    {"Company Name", "Dreams"},
+                    {"Description", "Pioneering healthcare AI solutions for a better future."},
+                    {"Group members & roles", "Manpreet Singh- UI/UX Designer"}
                 }
             };
 
