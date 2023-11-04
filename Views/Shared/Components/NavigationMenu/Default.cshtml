@@ -1,0 +1,81 @@
+@model List<MenuItem>
+
+<ul class="navbar-nav flex-grow-1">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/img/logo2.png" alt="Logo" class="logo">
+                @* Dreams *@
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    @foreach (var menuItem in Model)
+                    {
+                        if (menuItem.DropdownItems != null && menuItem.DropdownItems.Any())
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @menuItem.Label
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @foreach (var dropdownItem in menuItem.DropdownItems)
+                                    {
+                                        <li><a class="dropdown-item" asp-controller="@dropdownItem.Controller" asp-action="@dropdownItem.Action">@dropdownItem.Label</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="@menuItem.Controller" asp-action="@menuItem.Action">@menuItem.Label</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+</ul>
+
+<style>
+        /* css for create pages */
+a{
+    text-decoration: none;
+    color: #bdbdbd;
+    }
+a:hover{
+    color: #088178;
+}
+
+.btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #088178;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fefefe;
+}
+.btn:hover{
+    background: #088178;
+}
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fefefe;
+    font-size: 18px;
+    border-radius: 6px;
+}
+    </style>

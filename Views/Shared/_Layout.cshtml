@@ -25,8 +25,9 @@
     />
 </head>
 
-<body>
+<body>  
     <header class="white">
+    <!--
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -63,6 +64,8 @@
             </div>
         </div>
     </nav>
+    -->
+    @await Component.InvokeAsync("NavigationMenu")
 </header>
 
     <div class="container">
