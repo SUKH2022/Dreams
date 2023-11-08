@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dreams.Models
 {
-    public class ApplicationDbContext :  IdentityDbContext
+    public class ApplicationDbContext :  IdentityDbContext<IdentityUser, IdentityRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
