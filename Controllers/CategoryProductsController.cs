@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Dreams.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dreams.Controllers
 {
@@ -45,6 +46,7 @@ namespace Dreams.Controllers
         }
 
         // GET: CategoryProducts/Create
+        [Authorize(Roles="Admin")]
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
@@ -54,6 +56,7 @@ namespace Dreams.Controllers
         // POST: CategoryProducts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,CategoryId,Name,Description,Image,MSRP")] CategoryProduct categoryProduct)
@@ -69,6 +72,7 @@ namespace Dreams.Controllers
         }
 
         // GET: CategoryProducts/Edit/5
+        [Authorize(Roles="Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.CategoryProducts == null)
@@ -88,6 +92,7 @@ namespace Dreams.Controllers
         // POST: CategoryProducts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryId,Name,Description,Image,MSRP")] CategoryProduct categoryProduct)
@@ -122,6 +127,7 @@ namespace Dreams.Controllers
         }
 
         // GET: CategoryProducts/Delete/5
+        [Authorize(Roles="Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.CategoryProducts == null)
@@ -141,6 +147,7 @@ namespace Dreams.Controllers
         }
 
         // POST: CategoryProducts/Delete/5
+        [Authorize(Roles="Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -161,7 +168,7 @@ namespace Dreams.Controllers
 
         private bool CategoryProductExists(int id)
         {
-          return (_context.CategoryProducts?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.CategoryProducts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

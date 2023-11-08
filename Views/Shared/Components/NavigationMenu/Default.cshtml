@@ -39,6 +39,28 @@
                         }
                     }
                 </ul>
+
+                <ul class="navbar-nav">
+                    @if (User.Identity.IsAuthenticated){
+                        <li class= "nav-item">
+                            <a asp-are="Identity" asp-page="/Acount/Manage/Index" class="nav-link text-dark">
+                            Hello @User.Identity.Name!
+                            </a>
+                        </li>
+                        <li class= "nav-item">
+                            <a asp-are="Identity" asp-page="/Acount/Logout" class="nav-link text-dark">
+                            Logout
+                            </a> 
+                        </li>
+                    } else{
+                        <li class="nav-items">
+                            <a asp-are="Identity" asp-page="/Acount/Register" class="nav-link text-dark"></a>
+                        </li>
+                        <li class="nav-items">
+                            <a asp-are="Identity" asp-page="/Acount/Login" class="nav-link text-dark"></a>
+                        </li>
+                    }
+                </ul>
             </div>
         </div>
     </nav>
