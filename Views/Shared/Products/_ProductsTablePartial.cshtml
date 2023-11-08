@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.MSRP)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Department)
+                @Html.DisplayNameFor(model => model.Category)
             </th>
             <th></th>
         </tr>
@@ -38,9 +38,9 @@
                     @Html.DisplayFor(modelItem => item.MSRP)
                 </td>
                 <td>
-                    @if (item.Department != null)
+                    @if (item.Category != null)
                     {
-                        @Html.DisplayFor(modelItem => item.Department.Name)
+                        @Html.DisplayFor(modelItem => item.Category.Name)
                     }
                 </td>
                 <td>

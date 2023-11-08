@@ -26,14 +26,6 @@ namespace Dreams.Models
         [DataType(DataType.Currency)]
         public decimal MSRP { get; set; } = 0.01M;
 
-        [Required]
-        [Range(0.01, 999999.99)]
-        // [Range(0.01, 999999.99)]
-        public decimal Weight { get; set; }
-
-        [Required]
-        public ProductWeightUnit WeightUnit { get; set; }
-
         [ForeignKey("CategoryId")]
         public virtual Category? Category { get; set; }
     }
