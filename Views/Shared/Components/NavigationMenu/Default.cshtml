@@ -13,8 +13,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav space_around">
                     @foreach (var menuItem in Model)
                     {
                         if (menuItem.DropdownItems != null && menuItem.DropdownItems.Any())
@@ -39,27 +39,11 @@
                         }
                     }
                 </ul>
-
-                <ul class="navbar-nav">
-                    @if (User.Identity.IsAuthenticated){
-                        <li class= "nav-item">
-                            <a asp-are="Identity" asp-page="/Acount/Manage/Index" class="nav-link text-dark">
-                            Hello @User.Identity.Name!
-                            </a>
-                        </li>
-                        <li class= "nav-item">
-                            <a asp-are="Identity" asp-page="/Acount/Logout" class="nav-link text-dark">
-                            Logout
-                            </a> 
-                        </li>
-                    } else{
-                        <li class="nav-items">
-                            <a asp-are="Identity" asp-page="/Acount/Register" class="nav-link text-dark"></a>
-                        </li>
-                        <li class="nav-items">
-                            <a asp-are="Identity" asp-page="/Acount/Login" class="nav-link text-dark"></a>
-                        </li>
-                    }
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <partial name="_LoginPartial" />
+                    </li>
+                </ul>
                 </ul>
             </div>
         </div>
@@ -99,5 +83,11 @@ form input, form textarea{
     color: #fefefe;
     font-size: 18px;
     border-radius: 6px;
+}
+label {
+    color: grey;
+}
+.space_around {
+    margin-left: 100px;
 }
     </style>

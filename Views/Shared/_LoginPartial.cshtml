@@ -7,7 +7,16 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        <a id="manage" class="nav-link text-dark space_above space_left" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+    @if (UserManager.GetUserName(User) != null)
+    {
+        <text>@UserManager.GetUserName(User).Split('@')[0]</text>
+    }
+    else
+    {
+        <text>Hello Guest!</text>
+    }
+</a>
     </li>
     <li class="nav-item">
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -17,7 +26,7 @@
 }
 else
 {
-    <li class="nav-item">
+    <li class="nav-item space_left">
         <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
     </li>
     <li class="nav-item">
@@ -25,3 +34,12 @@ else
     </li>
 }
 </ul>
+
+<style>
+    .space_above {
+    margin-top: 56px;
+}
+.space_left{
+    margin-left: 100px;
+}
+</style>

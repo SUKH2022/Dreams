@@ -25,7 +25,7 @@ namespace Dreams.Components.ViewComponents
             new MenuItem { Controller = "Carts", Action = "Index", Label = "View My Cart" },
             new MenuItem { Controller = "Briefs", Action = "Index", Label = "Briefs" },
             new MenuItem { Controller = "Home", Action = "Contact", Label = "Contact" },
-            new MenuItem { Controller = "Home", Action = "Privacy", Label = "Privacy" },
+            // new MenuItem { Controller = "Home", Action = "Privacy", Label = "Privacy" },
         };
             return View(menuItems);
         }
