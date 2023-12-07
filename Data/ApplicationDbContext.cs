@@ -11,7 +11,11 @@ namespace Dreams.Models
         {
         }
         
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> 
+        Categories { get; set; }
         public DbSet<CategoryProduct> CategoryProducts { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }
