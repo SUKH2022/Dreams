@@ -51,4 +51,10 @@
             </tfoot>
         </table>
     }
+    @if (Model.CartItems.Count > 0)
+    {
+        <a class="btn btn-success" asp-controller="Orders" asp-action="Checkout">
+            Checkout
+        </a>
+    }
 </div>
