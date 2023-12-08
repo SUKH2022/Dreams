@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Dreams.Services;
 using Dreams.Models;
 
@@ -25,8 +26,8 @@ namespace Dreams.Controllers
             {
                 foreach (var cartItem in cart.CartItems)
                 {
-                    var product = await _context.Products
-                        .Include(p => p.Department)
+                    var product = await _context.CategoryProducts
+                        .Include(p => p.Category)
                         .FirstOrDefaultAsync(p => p.Id == cartItem.ProductId);
                     if (product != null)
                     {
@@ -51,7 +52,7 @@ namespace Dreams.Controllers
             }    
             else
             {
-                var product = await _context.Products
+                var product = await _context.CategoryProducts
                     .FirstOrDefaultAsync(p => p.Id == productId);
                 if (product == null) {
                     return NotFound();

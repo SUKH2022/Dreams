@@ -24,7 +24,7 @@ namespace Dreams.Controllers
             if (cart == null) {
                 return NotFound();
             }
-            var order = await _context.Order
+            var order = await _context.Orders
                 .FirstOrDefaultAsync(o => o.Id == cart.OrderId);
             order ??= new Order {
                 UserId = userId
