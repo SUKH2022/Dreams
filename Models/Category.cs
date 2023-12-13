@@ -4,7 +4,7 @@ namespace Dreams.Models
 {
     public class Category
     {
-        [Key]
+        [Key] // data annotation (specifies this is a primary key)
         public int Id { get; set; } = 0;
 
         [Required, StringLength(300)]
@@ -12,7 +12,8 @@ namespace Dreams.Models
 
         [StringLength(1000)]
         public string? Description { get; set; } = String.Empty;
-
-        public virtual ICollection<CategoryProduct>? CategoryProducts { get; set; }
+        
+        // Relationship with Products and place to store products in the Department instance
+        public virtual ICollection<CategoryProduct>? CategoryProducts { get; set; } = new List<CategoryProduct>();
     }
 }

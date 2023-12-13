@@ -20,7 +20,7 @@ namespace Dreams.Models
         public decimal Price { get; set; } = 0.00M;
 
         [Required]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 0;
 
         [ForeignKey("OrderId")]
         public virtual Order? Order { get; set; }

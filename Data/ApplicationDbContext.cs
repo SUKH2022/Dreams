@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Dreams.Models
 {
     public class ApplicationDbContext :  IdentityDbContext<IdentityUser, IdentityRole, string>

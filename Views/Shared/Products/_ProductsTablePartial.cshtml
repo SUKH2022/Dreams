@@ -49,12 +49,12 @@
                         <input type="hidden" name="quantity" value="1" />
                         <input type="submit" value="Quick Add to Cart" class="btn btn-success" />
                     </form>
-                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-controller="CategoryProducts" asp-action="Details" asp-route-id="@item.Id">Details</a>
                     @if (User.IsInRole("Admin")) {
                         <span>&nbsp;|&nbsp;</span>
-                        <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-controller="CategoryProducts" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                         <span>&nbsp;|&nbsp;</span>
-                        <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-controller="CategoryProducts" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
                 </td>
             </tr>

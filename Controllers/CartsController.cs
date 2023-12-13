@@ -1,31 +1,43 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using Dreams.Services;
 using Dreams.Models;
+using Dreams.Services;
 
 namespace Dreams.Controllers
 {
     public class CartsController : Controller
     {
-        private readonly string _cartSessionKey;
+        private readonly CartService _cartService;
         private readonly ApplicationDbContext _context;
-        public CartsController(ApplicationDbContext context)
+
+        public CartsController(CartService cartService, ApplicationDbContext context)
         {
-            _cartSessionKey = "Cart";
+            _cartService = cartService;
             _context = context;
+            _cartService = cartService;
         }
+
         public async Task<IActionResult> Index()
         {
-            var cart = GetCart();
+            // Get our cart (either an existing or generate a new one)
+            var cart = _cartService.GetCart();
+
             if (cart == null)
             {
                 return NotFound();
             }
+
+            // If the cart has items, we need to add the product reference for those items
             if (cart.CartItems.Count > 0)
             {
                 foreach (var cartItem in cart.CartItems)
                 {
+                    /*
+                        SELECT * FROM Products
+                        JOIN Departments ON Products.DepartmentId = Departments.Id
+                        WHERE Products.Id = 1 LIMIT 1
+                    */
                     var product = await _context.CategoryProducts
                         .Include(p => p.Category)
                         .FirstOrDefaultAsync(p => p.Id == cartItem.ProductId);
@@ -40,61 +52,57 @@ namespace Dreams.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(int productId, int quantity)
         {
-            var cart = GetCart();
+            // Getting the active cart
+            var cart = _cartService.GetCart();
+
             if (cart == null)
             {
+            if (cart == null) {
                 return NotFound();
             }
+
+            // Checking if item already is in the cart
             var cartItem = cart.CartItems.Find(cartItem => cartItem.ProductId == productId);
+
             if (cartItem != null && cartItem.Product != null)
             {
                 cartItem.Quantity += quantity; 
             }    
+                cartItem.Quantity += quantity;
+            }
             else
             {
                 var product = await _context.CategoryProducts
                     .FirstOrDefaultAsync(p => p.Id == productId);
+
                 if (product == null) {
                     return NotFound();
                 }
-                cartItem = new CartItem { ProductId = productId, Quantity = quantity, Product = product };
+
+                CartItem cartItem = new CartItem { ProductId = productId, Quantity = quantity, Product = product };
                 cart.CartItems.Add(cartItem);
             }
-            SaveCart(cart);
+            _cartService.SaveCart(cart);
+
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult RemoveFromCart(int productId)
         {
-            var cart = GetCart();
-
+            var cart = _cartService.GetCart();
             if (cart == null)
             {
                 return NotFound();
             }
-
             var cartItem = cart.CartItems.Find(cartItem => cartItem.ProductId == productId);
-
             if (cartItem != null)
             {
                 cart.CartItems.Remove(cartItem);
-
-                SaveCart(cart);
+                _cartService.SaveCart(cart);
             }
 
             return RedirectToAction("Index");
         }
-
-        private Cart? GetCart()
-        {
-            var cartJson = HttpContext.Session.GetString(_cartSessionKey);
-            return cartJson == null ? new Cart() : JsonConvert.DeserializeObject<Cart>(cartJson);
-        }
-        private void SaveCart(Cart cart)
-        {
-            var cartJson = JsonConvert.SerializeObject(cart);
-            HttpContext.Session.SetString(_cartSessionKey, cartJson);
-        }
-    }
+    }      
 }

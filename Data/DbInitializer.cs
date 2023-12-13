@@ -6,14 +6,17 @@ namespace Dreams.Models
     {
         public static async Task Initialize(
         UserManager<IdentityUser> userManager,
-        RoleManager<IdentityRole> roleManager)
+        RoleManager<IdentityRole> roleManager
+        )
         {
             string[] roleNames = { "Admin", "Customer", "Member"};
             foreach (var roleName in roleNames)
             {
                 var roleExist = await roleManager.RoleExistsAsync(roleName);
                 if (!roleExist)
+                {
                     await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
             }
 
             // Create an Admin user
@@ -27,7 +30,9 @@ namespace Dreams.Models
             var createUser = await userManager.CreateAsync(user, userPWD);
 
             if (createUser.Succeeded)
+            {
                 await userManager.AddToRoleAsync(user, "Admin");
+            }
         }
     }
 }

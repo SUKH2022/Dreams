@@ -18,14 +18,22 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Brief()
+    {
+        return View();// returns Views/Home/brief.cshtml
+    }
+
     public IActionResult Privacy()
     {
         return View();
     }
+
     public IActionResult Contact()
     {
         return View();
     }
+
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

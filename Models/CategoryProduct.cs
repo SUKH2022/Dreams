@@ -27,6 +27,7 @@ namespace Dreams.Models
         public decimal MSRP { get; set; } = 0.01M;
 
         [ForeignKey("CategoryId")]
-        public virtual Category? Category { get; set; }
+        public virtual Category? Category { get; set; }// creates the association to departments
+        // allows a department to be stored in an instance of a product
     }
 }
